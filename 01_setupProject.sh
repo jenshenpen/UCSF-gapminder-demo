@@ -5,6 +5,7 @@
 # unzip it, 
 ##########################################################
 
+# This is a comment added on GitHub
 
 echo Creating project directory structure
 sleep 2
