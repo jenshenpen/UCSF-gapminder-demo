@@ -1,0 +1,43 @@
+---
+title: "Practice Analysis Report"
+author: "Jen Shen"
+date: "March 6, 2017"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# change echo based on whether you want to see the code in the results
+```
+
+## Explore Gap Minder Data
+
+```{r reading_gapminder} 
+# chunk names need to be unique
+# read in our cleaned gapminder file
+gapM <- read.table(file = "~/Desktop/Monday_am_analysis/output/combined_gapMinder.tsv", sep = '\t', header = TRUE)
+```
+
+I read in the data, now plot **population** and **life expectancy**:
+```{r plot_gapminder}
+plot(gapM$pop, gapM$lifeExp, main = "Gap Minder", xlab = "Population", ylab = "Life Exp")
+```
+
+Now plot the data for a subset of the data:
+```{r plot_highpop}
+gapM_large_Pop <- gapM[gapM$pop >= 100000000,]
+plot(gapM_large_Pop$pop, gapM_large_Pop$lifeExp, main = "Gap Minder", xlab = "Population", ylab = "Life Exp")
+```
+
+# Graph average population numbers by continent
+
+```{r plot_aggpop}
+agg_gap_country <- aggregate(pop~continent, data=gapM, FUN = mean)
+plot(agg_gap_country, xlab = "Continent", ylab = "Population")
+```
+
+```{r run_script}
+# source("~/Desktop/Monday_am_analysis/code/learning_gapminder.R")
+# reminder on how to feed in existing R script
+```
+
