@@ -1,0 +1,43 @@
+---
+title: "Analysis Report"
+author: "Jen Shen"
+date: "March 6, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+install.packages("ggplot2")
+library(ggplot2)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## GDP Plots
+
+# Zambia
+
+```{r read_gapminder}
+gapM <- read.table(file = "output/combined_gapMinder.tsv", sep = '\t', header = TRUE)
+```
+Figure 1: Zambia's GDP Per Capita by Year
+
+```{r zambia_gdp_plot, fig.align = left, fig.width = 7}
+gapM_zambia <- subset(gapM, country == "Zambia")
+plot(gapM_zambia$year, gapM_zambia$gdpPercap, main = "Zambia's GDP by Year", xlab = "Year", ylab= "GDP Per Capita")
+```
+
+GDP per capita for Zambia spike in 1970, and went on a large decline between 1970 and 2000.
+
+Figure 2: Kenya's GDP per capita by year
+```{r kenya_gdp_plot, fig.align = left, fig.width = 7}
+gapM_kenya <- subset(gapM, country == "Kenya")
+plot(gapM_kenya$year, gapM_kenya$gdpPercap, main = "Kenya's GDP by Year", xlab = "Year", ylab= "GDP Per Capita")
+```
+
+GDP per capita for Kenya, in contrast, increased over time between 1950 and now.
+
+Figure 3: Nigeria's GDP per capita by year
+```{r nigeria_gdp_plot, fig.align = left, fig.width = 7}
+gapM_nigeria <- subset(gapM, country == "Nigeria")
+plot(gapM_nigeria$year, gapM_nigeria$gdpPercap, main = "Nigeria's GDP by Year", xlab = "Year", ylab= "GDP Per Capita")
+```
+
